@@ -11,20 +11,34 @@
 
 #include <iostream>
 #include <string>
+#include <map>
+
+#include "Direction.hpp"
 
 using namespace std;
+
 
 namespace ariel{
     
     class Notebook {
         
         private:
-            // dynamic array. < consider vector usage.
-            unsigned int page;
-            unsigned int row;
-            unsigned int column;
+            /**
+             * @brief i used the database of Map<key = int, value = dynamic array > 
+             * i chose it this way because i want my datastructers to operate like this:
+             * Key = notebook's page.
+             * Value = notebook's page contents.
+             * while i chose the notebook page to be created using a pointer array, it can be endless.
+             */ // col,row
+            map<unsigned int,int(*)[100]> notebook; 
 
         public:
+
+            /**
+             * @brief Construct a new Notebook object
+             * 
+             */
+            Notebook();
 
             /**
              * @brief This method writes to a given page the given input.
@@ -39,11 +53,11 @@ namespace ariel{
 
            /**
             * @brief this method is used to read a certain block from the notebook.
-            * the params are the same as the above, i will not state them again, there is a single change.
-            * @param page 
-            * @param row 
-            * @param column 
-            * @param dir 
+            * 
+            * @param page represents a page in the book
+            * @param row represents a row to start reading from
+            * @param column represeting the column to start the reading from.
+            * @param dir Horizontal -> left to right, Vertical -> up to down.
             * @param size -> represting how many rows/columns to read, the decsion is based on the direction.
             * @return string of the required block.
             */
@@ -51,11 +65,11 @@ namespace ariel{
 
            /**
             * @brief this method is used to remove a certain block from the notebook.
-            * the params are the same as the above, i will not state them again, there is a single change.
-            * @param page 
-            * @param row 
-            * @param column 
-            * @param dir 
+            * 
+            * @param page represents a page in the book
+            * @param row represents a row to start erasing from
+            * @param column represeting the column to start the erasing from.
+            * @param dir Horizontal -> left to right, Vertical -> up to down.
             * @param size -> represting how many rows/columns to remove, the decsion is based on the direction.
             */
            void erase(unsigned int page, unsigned int row, unsigned int column, Direction dir, int size);

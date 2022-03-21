@@ -29,18 +29,27 @@ string nospaces(string input) {
 	std::erase(input, '\r');
 	return input;
 }
-
+// global notebook to be used for good inputs and bad inputs. /* CONSIDER - book for good and for bad.*/
+Notebook tests;
 
 TEST_CASE("Good input") { // first,third = rows : second,fourth = rows 
-
+	
 	//1
-	CHECK((Notebook::read(2, 2,2,Direction::Horizontal, 1 )) == ("---"));
+	CHECK(tests.read(2, 2,2,Direction::Horizontal, 1) == "---");
 
 }
 
 TEST_CASE("Bad input") {
-	//1
-    CHECK_THROWS(Notebook::write(-2, 2,2,Direction::Horizontal, "blabla" )); // negative rows
+
+	// Negative input cases:
+    CHECK_THROWS(tests.read(-2, 2,2,Direction::Horizontal, 3)); // negative page
+	CHECK_THROWS(tests.read(-2, 2,2,Direction::Horizontal, -3)); // negative size
+	CHECK_THROWS(tests.read(2, -2,2,Direction::Horizontal, 3)); // negative row
+	CHECK_THROWS(tests.read(2, 2,-2,Direction::Horizontal, 3)); // negative column
+
+	//Out of bounds input:
+	CHECK_THROWS(tests.read(2, 101,2,Direction::Horizontal, 3)); // rows are maxed at 100.
+	CHECK_THROWS(tests.read(2, 2,2,Direction::Vertical, 99)); // 99+2 = 101 row, bad input.
 
 }
 

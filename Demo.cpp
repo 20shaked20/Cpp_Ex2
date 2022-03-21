@@ -23,7 +23,7 @@ int main() {
 		// throws error because writing the letter y will intersect with the letter c
 	notebook.erase(/*page=*/100, /*row=*/99, /*column=*/51, Direction::Vertical, /*length=*/3);
 		// writes ~ instead of _ in line 99, b in line 100 and _ again in line 99
-
+		
 	notebook.show(100); // shows the notebook's page in a reasonable way. For example:
 		//    98:  _________
 		//    99:  ___~_____
