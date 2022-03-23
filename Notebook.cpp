@@ -5,23 +5,20 @@ using namespace ariel;
 
 // constructor!
 Notebook::Notebook(){
-    return;
 }
 
-void Notebook::write(unsigned int page, unsigned int row, unsigned int column, Direction dir, string input){
-    return;
+void Notebook::write(int page, int row, int column, Direction dir, string input){
 }
 
-string Notebook::read(unsigned int page, unsigned int row, unsigned int column, Direction dir, int size){
+string Notebook::read(int page,  int row, int column, Direction dir, int size){
     return "This is read";
 }
 
-void Notebook::erase(unsigned int page, unsigned int row, unsigned int column, Direction dir, int size){
-    return;
+void Notebook::erase( int page, int row, int column, Direction dir, int size){
 }
 
-void Notebook::show(unsigned int page){
-    cout<< "This is a show"<< endl;
+void Notebook::show( int page){
+    cout<< "This is show"<< endl;
 }
 
 
